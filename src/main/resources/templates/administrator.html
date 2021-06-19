@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopy - Администратор</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap" rel="stylesheet">
+</head>
+<body>
+<header th:insert="includes/head.html :: headerFragment"> </header>
+<main>
+    <div id="myProfile">
+        <img style="margin-bottom: 15px" th:src="${currentUser.img}"/>
+        <input id="avatarInput" type="text" placeholder="Ссылка на изображение профиля"><button id="uploadAvatarButton">Загрузить фото</button>
+        <h2 th:text="${currentUser.surname + ' ' + currentUser.name + ' ' + currentUser.patronymic}"></h2>
+        <h3 th:text="${currentUser.address}"></h3>
+        <h3 th:text="${currentUser.email}"></h3>
+        <hr>
+        <h2>Блокировка пользователей</h2>
+        <div th:if="${allUsers.empty}">
+            <div>Нет зарегистрированных пользователей</div>
+        </div>
+        <table border="1">
+            <tr>
+                <td>Аватар</td>
+                <td>ФИО</td>
+                <td>Логин</td>
+                <td>Email</td>
+                <td>Действие</td>
+            </tr>
+            <tr th:each="u : ${allUsers}">
+                <td><img th:src="${u.img}"/></td>
+                <td><p th:text="${u.surname + ' ' + u.name + ' ' + u.patronymic}"></p></td>
+                <td><p th:text="${u.username}"></p></td>
+                <td><p th:text="${u.email}"></p></td>
+                <td><button id="blockUserButton" th:name="${u.id}">Заблокировать</button></td>
+            </tr>
+        </table>
+    </div>
+</main>
+<footer th:insert="includes/foot.html :: footerFragment"> </footer>
+</body>
+</html>

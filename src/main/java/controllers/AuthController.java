@@ -59,10 +59,19 @@ public class AuthController {
         return "profile";
     }
 
+    @GetMapping("/administrator")
+    public String administrator(Model model) {
+        Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("currentUser", authService.findByUsername(currentUser.getName()));
+        model.addAttribute("allUsers", authService.findAll());
+        return "administrator";
+    }
+
     @PostMapping("/uploadAvatarPhoto")
     public String uploadAvatarPhoto(@RequestParam String avatarPhoto,Model model){
         Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("currentUser", authService.findByUsername(currentUser.getName()));
+        model.addAttribute("allUsers", authService.findAll());
         authService.uploadPhoto(authService.findByUsername(currentUser.getName()), avatarPhoto);
         return "profile";
     }

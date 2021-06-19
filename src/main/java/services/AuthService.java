@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import repository.UserRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,6 +20,10 @@ public class AuthService implements UserDetailsService {
     private UserRepository userRepository;
     @Autowired
     private BCryptPasswordEncoder encoder;
+
+    public List<User> findAll(){
+        return userRepository.findAll();
+    }
 
     public User findByUsername(String username){
         if(userRepository.findByUsername(username).isPresent()){
