@@ -1,10 +1,12 @@
 package services;
 
+import entity.Role;
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import repository.UserRepository;
 
@@ -15,16 +17,28 @@ public class AuthService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     public User findByUsername(String username){
-        return userRepository.findByUsername(username).get();
+        if(userRepository.findByUsername(username).isPresent()){
+            return userRepository.findByUsername(username).get();
+        }else{
+            return null;
+        }
     }
 
     public User findByEmail(String email){
-        return userRepository.findByEmail(email).get();
+        if(userRepository.findByEmail(email).isPresent()){
+            return userRepository.findByEmail(email).get();
+        }else{
+            return null;
+        }
     }
 
     public void registration(User user){
+        user.setPassword(encoder.encode(user.getPassword()));
+        user.setRole(Role.ROLE_CUSTOMER);
         userRepository.save(user);
     }
 
