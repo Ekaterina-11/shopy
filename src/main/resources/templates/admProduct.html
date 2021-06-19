@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopy - Добавление товара</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap" rel="stylesheet">
+</head>
+<body>
+<header th:insert="includes/head.html :: headerFragment"> </header>
+<main>
+    <div id="myProfile">
+        <h2>Добавления товара</h2>
+        <hr>
+        <form>
+            <input id="photoInput" type="text" placeholder="Ссылка на изображение товара">
+            <button id="uploadPhotoButton">Загрузить фото</button>
+            <input id="nameInput" type="text" placeholder="Название товара">
+            <input id="descriptionInput" type="text" placeholder="Описание товара">
+            <input id="costInput" type="number" placeholder="Цена товара">
+            <input type="submit" value="Добавить">
+        </form>
+    </div>
+</main>
+<footer th:insert="includes/foot.html :: footerFragment"> </footer>
+</body>
+</html>

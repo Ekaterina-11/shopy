@@ -34,7 +34,7 @@ main {
     align-items: center;
 }
 
-form {
+form#forAuth {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -221,4 +221,54 @@ table img {
 
 #blockUserButton {
     width: 100%;
+}
+
+input[type="submit" i]{
+    border: 3px white solid;
+    color: white;
+    width: 45%;
+    height: 58px;
+    font-size: x-large;
+    margin-bottom: 15px;
+    background: none;
+    font-family: 'Anonymous Pro', monospace;
+}
+
+input[type="submit" i]:hover{
+    border: 3px white solid;
+    color: black;
+    width: 45%;
+    height: 58px;
+    font-size: x-large;
+    margin-bottom: 15px;
+    background: white;
+    font-family: 'Anonymous Pro', monospace;
+}
+
+input[type="number" i] {
+    border: 3px white solid;
+    color: white;
+    padding: 2%;
+    width: 40%;
+    height: 25px;
+    font-size: x-large;
+    margin-bottom: 15px;
+    background: none;
+    font-family: 'Anonymous Pro', monospace;
+}
+
+button#uploadPhotoButton {
+    border: 3px white solid;
+    color: white;
+    width: 45%;
+    height: 58px;
+    font-size: x-large;
+    margin-bottom: 15px;
+    background: none;
+    font-family: 'Anonymous Pro', monospace;
+}
+
+button#uploadPhotoButton:hover{
+    color: black;
+    background: white;
 }

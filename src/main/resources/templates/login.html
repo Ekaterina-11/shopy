@@ -11,7 +11,7 @@
     <header th:insert="includes/head.html :: headerFragment"> </header>
     <main>
         <div id="entering">
-            <form method="post" th:action="@{/login}">
+            <form id="forAuth" method="post" th:action="@{/login}">
                 <span th:text="${errors}"></span>
                 <h1>Форма входа: </h1>
                 <input type="text" name="username" id="username" placeholder="Логин">

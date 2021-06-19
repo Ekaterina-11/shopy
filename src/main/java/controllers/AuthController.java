@@ -75,4 +75,12 @@ public class AuthController {
         authService.uploadPhoto(authService.findByUsername(currentUser.getName()), avatarPhoto);
         return "profile";
     }
+
+    @GetMapping("/admProduct")
+    public String admProduct(Model model) {
+        Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
+
+        return "admProduct";
+    }
+
 }
