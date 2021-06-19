@@ -8,10 +8,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap" rel="stylesheet">
 </head>
 <body>
-<header th:insert="includes/head.html :: headerFragment"> </header>
-<main>
-
-</main>
-<footer th:insert="includes/foot.html :: footerFragment"> </footer>
+    <header th:insert="includes/head.html :: headerFragment"> </header>
+    <main>
+        <div id="entering">
+            <form method="post" th:action="@{/login}">
+                <span th:text="${errors}"></span>
+                <h1>Форма входа: </h1>
+                <input type="text" name="username" id="username" placeholder="Логин">
+                <input type="password" name="password" id="password" placeholder="Пароль">
+                <input type="submit" value="Вход">
+            </form>
+        </div>
+    </main>
+    <footer th:insert="includes/foot.html :: footerFragment"> </footer>
 </body>
 </html>
