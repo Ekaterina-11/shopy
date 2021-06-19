@@ -8,10 +8,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap" rel="stylesheet">
 </head>
 <body>
-<header th:insert="includes/head.html :: headerFragment"> </header>
-<main>
-
-</main>
-<footer th:insert="includes/foot.html :: footerFragment"> </footer>
+    <header th:insert="includes/head.html :: headerFragment"> </header>
+    <main>
+        <div id="entering">
+            <form method="post" th:action="@{/registration}">
+                <span th:text="${errors}"></span>
+                <h1>Форма регистрации: </h1>
+                <input type="text" name="name" id="name" placeholder="Имя" required>
+                <input type="text" name="surname" id="surname" placeholder="Фамилия" required>
+                <input type="text" name="patronymic" id="patronymic" placeholder="Отчество" required>
+                <input type="text" name="address" id="address" placeholder="Адрес доставки" required>
+                <input type="text" name="email" id="email" placeholder="Электронная почта" required>
+                <input type="text" name="username" id="username" placeholder="Логин" required>
+                <input type="password" name="password" id="password" placeholder="Пароль" required>
+                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Повторите пароль" required>
+                <input type="submit" value="Регистрация">
+            </form>
+        </div>
+    </main>
+    <footer th:insert="includes/foot.html :: footerFragment"> </footer>
 </body>
 </html>
