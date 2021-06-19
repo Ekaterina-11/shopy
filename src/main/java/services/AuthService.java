@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import repository.UserRepository;
 
+import java.util.Optional;
+
 @Service
 public class AuthService implements UserDetailsService {
 
@@ -28,11 +30,11 @@ public class AuthService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserDetails u = userRepository.findByUsername(username).get();
-        if(u == null) {
-            throw new UsernameNotFoundException("Пользователя не существует");
-        } else {
-            return u;
+        Optional<User> currentUser = userRepository.findByUsername(username);
+        if(currentUser.isPresent()) {
+            return currentUser.get();
+        }else{
+            throw new UsernameNotFoundException("Пользователь не найден");
         }
     }
 }
