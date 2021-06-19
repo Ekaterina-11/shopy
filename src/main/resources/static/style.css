@@ -98,3 +98,45 @@ input[type="submit" i]:hover{
     background: white;
     font-family: 'Anonymous Pro', monospace;
 }
+
+div#footerFragment {
+display: flex;
+    width: 100%;
+    background: black;
+    color: white;
+}
+
+div#mapFoot{
+width: 33.333%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div#contactFoot{
+width: 33.333%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+div#contactFoot li{
+    font-size: x-large;
+}
+
+div#creditsFoot{
+width: 33.333%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+div#creditsFoot p{
+    text-align: center;
+margin-block: 0;
+    font-size: x-large;
+}
+
+div#creditsFoot li{
+    font-size: x-large;
+}

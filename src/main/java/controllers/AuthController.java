@@ -45,4 +45,9 @@ public class AuthController {
         authService.registration(user);
         return "login";
     }
+
+    @GetMapping("/profile")
+    public String profile() {
+        return "profile";
+    }
 }
