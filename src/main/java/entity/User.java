@@ -24,6 +24,7 @@ public class User implements UserDetails {
     private String surname;
     private String patronymic;
     private String address;
+    private String img;
     private String password;
     private String confirmPassword;
     private String activationCode;
@@ -147,5 +148,13 @@ public class User implements UserDetails {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

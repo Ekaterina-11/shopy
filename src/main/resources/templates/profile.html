@@ -10,7 +10,13 @@
 <body>
 <header th:insert="includes/head.html :: headerFragment"> </header>
 <main>
-
+    <div id="myProfile">
+        <img style="margin-bottom: 15px" th:src="${currentUser.img}"/>
+        <input id="avatarInput" type="text" placeholder="Ссылка на изображение профиля"><button id="uploadAvatarButton">Загрузить фото</button>
+        <h2 th:text="${currentUser.surname + ' ' + currentUser.name + ' ' + currentUser.patronymic}"></h2>
+        <h3 th:text="${currentUser.address}"></h3>
+        <h3 th:text="${currentUser.email}"></h3>
+    </div>
 </main>
 <footer th:insert="includes/foot.html :: footerFragment"> </footer>
 </body>

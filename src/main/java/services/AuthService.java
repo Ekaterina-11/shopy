@@ -37,8 +37,14 @@ public class AuthService implements UserDetailsService {
     }
 
     public void registration(User user){
+        user.setImg("https://www.pngitem.com/pimgs/m/22-224287_computer-icons-user-profile-avatar-caller-id-icon.png");
         user.setPassword(encoder.encode(user.getPassword()));
         user.setRole(Role.ROLE_CUSTOMER);
+        userRepository.save(user);
+    }
+
+    public void uploadPhoto(User user, String img){
+        user.setImg(img);
         userRepository.save(user);
     }
 

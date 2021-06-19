@@ -46,7 +46,8 @@ form {
 }
 
 div#entering {
-    margin-top: 5%;
+    margin-top: 6%;
+    margin-bottom: 6%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -139,4 +140,54 @@ margin-block: 0;
 
 div#creditsFoot li{
     font-size: x-large;
+}
+
+div#myProfile {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #232323;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 10px;
+    border: 3px solid black;
+    color: white;
+}
+
+div#myProfile img {
+object-fit: cover;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: 3px solid white;
+}
+
+button {
+    border: 3px white solid;
+    color: white;
+    width: 40%;
+    height: 45px;
+    font-size: x-large;
+    margin-bottom: 15px;
+    background: none;
+    font-family: 'Anonymous Pro', monospace;
+}
+
+button:hover{
+    color: black;
+    background: white;
+}
+
+div#myProfile input[type="text" i] {
+    border: 3px white solid;
+    color: white;
+    padding: 2%;
+    width: 40%;
+    height: 25px;
+    font-size: x-large;
+    margin-bottom: 15px;
+    background: none;
+    font-family: 'Anonymous Pro', monospace;
 }

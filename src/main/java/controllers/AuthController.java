@@ -2,10 +2,13 @@ package controllers;
 
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import services.AuthService;
 
 import javax.validation.Valid;
@@ -47,7 +50,20 @@ public class AuthController {
     }
 
     @GetMapping("/profile")
-    public String profile() {
+    public String profile(Model model) {
+        Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
+
+        if(!currentUser.getName().equals("anonymousUser")){
+            model.addAttribute("currentUser", authService.findByUsername(currentUser.getName()));
+        }
+        return "profile";
+    }
+
+    @PostMapping("/uploadAvatarPhoto")
+    public String uploadAvatarPhoto(@RequestParam String avatarPhoto,Model model){
+        Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("currentUser", authService.findByUsername(currentUser.getName()));
+        authService.uploadPhoto(authService.findByUsername(currentUser.getName()), avatarPhoto);
         return "profile";
     }
 }

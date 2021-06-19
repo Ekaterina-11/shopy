@@ -7,7 +7,7 @@
 <body>
 <div id="headerFragment" th:fragment="headerFragment">
     <div><a href="/">Shopy</a></div>
-    <div sec:authorize="hasRole('ROLE_CUSTOMER')"><a href="/profile"><span th:text="${currentUser}"></span></a></div>
+    <div sec:authorize="hasRole('ROLE_CUSTOMER')"><a href="/profile"><span th:text="${currentUser.username}"></span></a></div>
     <div sec:authorize="hasRole('ROLE_ADMIN')"><a href="/administrator">Администратор</a></div>
     <div sec:authorize="!isAuthenticated()"><a href="/login">Вход</a> или <a href="/registration">Регистрация</a></div>
     <div sec:authorize="isAuthenticated()"><a href="/logout">Выход</a></div>
