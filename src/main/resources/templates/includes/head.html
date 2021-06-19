@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Заголовочный файл</title>
+</head>
+<body>
+<div id="headerFragment" th:fragment="headerFragment">
+    <div><a href="/">Shopy</a></div>
+    <div sec:authorize="hasRole('ROLE_CUSTOMER')"><a href="/user">Мой профиль</a></div>
+    <div sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin">Администратор</a></div>
+    <div sec:authorize="!isAuthenticated()"><a href="/login">Вход</a> или <a href="/registration">Регистрация</a></div>
+    <div sec:authorize="isAuthenticated()"><a href="/logout">Выход</a></div>
+</div>
+</body>
+</html>
