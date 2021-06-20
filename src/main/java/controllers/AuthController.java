@@ -76,11 +76,4 @@ public class AuthController {
         return "profile";
     }
 
-    @GetMapping("/admProduct")
-    public String admProduct(Model model) {
-        Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
-
-        return "admProduct";
-    }
-
 }

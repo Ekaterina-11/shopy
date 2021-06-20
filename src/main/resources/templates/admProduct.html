@@ -13,13 +13,13 @@
     <div id="myProfile">
         <h2>Добавления товара</h2>
         <hr>
-        <form>
-            <input id="photoInput" type="text" placeholder="Ссылка на изображение товара">
-            <button id="uploadPhotoButton">Загрузить фото</button>
-            <input id="nameInput" type="text" placeholder="Название товара">
-            <input id="descriptionInput" type="text" placeholder="Описание товара">
-            <input id="costInput" type="number" placeholder="Цена товара">
-            <input type="submit" value="Добавить">
+        <img id="productImg">
+        <form id="addProduct" method="post" th:action="@{/admProduct}">
+            <input id="image" type="text" placeholder="Ссылка на изображение товара" required>
+            <input id="title" type="text" placeholder="Название товара" required>
+            <input id="description" type="text" placeholder="Описание товара" required>
+            <input id="cost" type="number" placeholder="Цена товара" required>
+            <input id="submitAdd" type="submit" value="Добавить">
         </form>
     </div>
 </main>
