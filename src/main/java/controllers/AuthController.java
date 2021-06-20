@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import services.AuthService;
@@ -53,6 +54,17 @@ public class AuthController {
 
         authService.registration(user);
         return "login";
+    }
+
+    @GetMapping("/activationProfile/{randomCode}")
+    public String activationProfile(@PathVariable String randomCode, Model model){
+        if(authService.activateMe(randomCode)){
+            model.addAttribute("errors", "Аккаунт активирован");
+            return "redirect:/login";
+        }else{
+            model.addAttribute("errors", "Ошибка активации");
+            return "redirect:/login";
+        }
     }
 
     @GetMapping("/profile")

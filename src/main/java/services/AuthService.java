@@ -12,6 +12,7 @@ import repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class AuthService implements UserDetailsService {
@@ -20,6 +21,8 @@ public class AuthService implements UserDetailsService {
     private UserRepository userRepository;
     @Autowired
     private BCryptPasswordEncoder encoder;
+    @Autowired
+    private SenderService senderService;
 
     public List<User> findAll(){
         return userRepository.findAll();
@@ -45,7 +48,21 @@ public class AuthService implements UserDetailsService {
         user.setImg("https://www.pngitem.com/pimgs/m/22-224287_computer-icons-user-profile-avatar-caller-id-icon.png");
         user.setPassword(encoder.encode(user.getPassword()));
         user.setRole(Role.ROLE_CUSTOMER);
+        user.setActivationCode(UUID.randomUUID().toString());
+        senderService.activateMe(user);
         userRepository.save(user);
+    }
+
+    public boolean activateMe(String randomCode){
+        Optional<User> checkCode = userRepository.findByActivationCode(randomCode);
+        if(checkCode.isPresent()){
+            User activateIt = checkCode.get();
+            activateIt.setActivationCode(null);
+            userRepository.save(activateIt);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void uploadPhoto(User user, String img){
