@@ -142,3 +142,65 @@ if(initialStore == null){
     localStorage.setItem("cartTitle", JSON.stringify([]));
     localStorage.setItem("cartCost", JSON.stringify([]));
 }
+
+let searching = document.getElementById("searching");
+let minCost = document.getElementById("minCost");
+let maxCost = document.getElementById("maxCost");
+let blocks = Array.from(document.getElementsByClassName("simpleProduct"));
+let allCosts = Array.from(document.getElementsByClassName("allCosts"));
+
+if(searching != null){
+    searching.onkeyup = function searchFunc(){
+        if(searching.value != "" && searching.value != " "){
+            for(let i=0;i<blocks.length;i++){
+                if(blocks[i].innerHTML.indexOf(searching.value) !== -1){
+                    blocks[i].style.display = "flex";
+                }else{
+                    blocks[i].style.display = "none";
+                }
+            }
+            allCosts.forEach(e => {
+                if(parseInt(e.innerHTML) < parseInt(minCost.value) || parseInt(e.innerHTML) > parseInt(maxCost.value)){
+                    e.parentElement.style.display = "none";
+                }
+            });
+        }else{
+            for(let i=0;i<blocks.length;i++){
+                blocks[i].style.display = "flex";
+            }
+        }
+    }
+    minCost.onchange = function searchFunc1(){
+        for(let i=0;i<blocks.length;i++){
+            if(blocks[i].innerHTML.indexOf(searching.value) !== -1){
+
+            }else{
+                blocks[i].style.display = "none";
+            }
+        }
+        allCosts.forEach(e => {
+            if(parseInt(e.innerHTML) < parseInt(minCost.value) || parseInt(e.innerHTML) > parseInt(maxCost.value)){
+                e.parentElement.style.display = "none";
+            }else{
+                e.parentElement.style.display = "flex";
+            }
+        });
+    }
+
+    maxCost.onchange = function searchFunc2(){
+        for(let i=0;i<blocks.length;i++){
+            if(blocks[i].innerHTML.indexOf(searching.value) !== -1){
+
+            }else{
+                blocks[i].style.display = "none";
+            }
+        }
+        allCosts.forEach(e => {
+            if(parseInt(e.innerHTML) < parseInt(minCost.value) || parseInt(e.innerHTML) > parseInt(maxCost.value)){
+                e.parentElement.style.display = "none";
+            }else{
+                e.parentElement.style.display = "flex";
+            }
+        });
+    }
+}

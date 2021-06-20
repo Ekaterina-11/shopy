@@ -12,6 +12,11 @@
 <main>
     <div id="products">
         <h2>Наш ассортимент: </h2>
+        <div id="sorting">
+            <input id="searching" type="text" placeholder="Поиск устройств">
+            <input id="minCost" value="0" type="number" placeholder="Минимальная цена">
+            <input id="maxCost" value="140000" type="number" placeholder="Максимальная цена">
+        </div>
         <div id="productList">
             <div th:if="${allProducts.empty}">
                 <div>Продуктов пока нет, приходите завтра :)</div>
@@ -20,7 +25,7 @@
                 <img th:src="${p.image}"/>
                 <span th:id="'title' + ${p.id}" th:text="${p.title}"></span>
                 <span th:text="${p.description}"></span>
-                <span th:id="'cost' + ${p.id}" th:text="${p.cost}"></span>
+                <span class="allCosts" th:id="'cost' + ${p.id}" th:text="${p.cost}"></span>
                 <button sec:authorize="isAuthenticated()" class="addToCart" th:value="${p.id}">В корзину</button>
             </div>
         </div>

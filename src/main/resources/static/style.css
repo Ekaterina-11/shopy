@@ -393,3 +393,29 @@ div#products {
 .confirmOrderButton{
     width: 100% !important;
 }
+
+#sorting{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+    background: #232323;
+    margin-top: 5%;
+    padding: 10px;
+    border: 3px solid white;
+    color: white;
+}
+
+input#searching {
+    border: 3px white solid;
+    color: white;
+    padding: 2%;
+    width: 100%;
+    height: 25px;
+    font-size: x-large;
+    margin-bottom: 15px;
+    background: none;
+    font-family: 'Anonymous Pro', monospace;
+}
