@@ -55,7 +55,7 @@ let deleteProduct = Array.from(document.getElementsByClassName("deleteProduct"))
 if(deleteProduct != null){
     deleteProduct.forEach(e => {
         e.onclick = function(event){
-            post('/admDelProduct',"id="+encodeURIComponent(parseInt(event.target.name))); //event.target
+            post('/admDelProduct',"id="+encodeURIComponent(parseInt(event.target.name)));
         }
     });
 }
@@ -63,8 +63,22 @@ if(deleteProduct != null){
 let blockUserButton = Array.from(document.getElementsByClassName("blockUserButton"));
 if(blockUserButton != null){
     blockUserButton.forEach(e => {
-        e.onclick = function(event){ //admCustomer
+        e.onclick = function(event){
             post('/admCustomer',"id="+encodeURIComponent(parseInt(event.target.name)));
         }
     });
+}
+
+let cardButton = document.getElementById("cardButton");
+let cartClose = document.getElementById("cartClose");
+if(cardButton != null){
+    cartClose.onclick = function(event){
+        let cartDiv = document.getElementById("cartDiv");
+        cartDiv.style.display = "none";
+    }
+
+    cardButton.onclick = function(event){
+        let cartDiv = document.getElementById("cartDiv");
+        cartDiv.style.display = "flex";
+    }
 }
