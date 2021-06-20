@@ -88,6 +88,6 @@ public class AuthController {
         model.addAttribute("allUsers", authService.findAll());
         model.addAttribute("allProducts", productService.findAll());
         authService.deleteUser(id);
-        return "administrator";
+        return "redirect:/administrator";
     }
 }

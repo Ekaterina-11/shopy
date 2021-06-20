@@ -35,7 +35,7 @@ public class ProductController {
         model.addAttribute("allUsers", authService.findAll());
         model.addAttribute("allProducts", productService.findAll());
         productService.saveProduct(product);
-        return "administrator";
+        return "redirect:/administrator";
     }
 
     @PostMapping("/admDelProduct")
@@ -45,6 +45,6 @@ public class ProductController {
         model.addAttribute("allUsers", authService.findAll());
         model.addAttribute("allProducts", productService.findAll());
         productService.deleteProduct(id);
-        return "administrator";
+        return "redirect:/administrator";
     }
 }
