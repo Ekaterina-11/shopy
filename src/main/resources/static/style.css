@@ -300,3 +300,7 @@ form#addProduct input[type="text" i] {
     background: none;
     font-family: 'Anonymous Pro', monospace;
 }
+
+#deleteProduct{
+    width: 100%;
+}

@@ -41,6 +41,22 @@
         <h2>Заказы пользователей</h2>
         <hr>
         <h2>Товары</h2>
+        <table border="1">
+            <tr>
+                <td>Изображение</td>
+                <td>Название</td>
+                <td>Описание</td>
+                <td>Цена</td>
+                <td>Действие</td>
+            </tr>
+            <tr th:each="u : ${allProducts}">
+                <td><img th:src="${u.image}"/></td>
+                <td><p th:text="${u.title}"></p></td>
+                <td><p th:text="${u.description}"></p></td>
+                <td><p th:text="${u.cost}"></p></td>
+                <td><button id="deleteProduct" th:name="${u.id}">Удалить</button></td>
+            </tr>
+        </table>
         <hr>
         <button onclick="document.location.href='/admProduct'">Добавить товар</button>
     </div>

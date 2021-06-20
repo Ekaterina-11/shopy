@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import services.AuthService;
+import services.ProductService;
 
 import javax.validation.Valid;
 
@@ -18,6 +19,8 @@ public class AuthController {
 
     @Autowired
     private AuthService authService;
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("/login")
     public String login() {
@@ -64,6 +67,7 @@ public class AuthController {
         Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("currentUser", authService.findByUsername(currentUser.getName()));
         model.addAttribute("allUsers", authService.findAll());
+        model.addAttribute("allProducts", productService.findAll());
         return "administrator";
     }
 
@@ -72,6 +76,7 @@ public class AuthController {
         Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("currentUser", authService.findByUsername(currentUser.getName()));
         model.addAttribute("allUsers", authService.findAll());
+        model.addAttribute("allProducts", productService.findAll());
         authService.uploadPhoto(authService.findByUsername(currentUser.getName()), avatarPhoto);
         return "profile";
     }

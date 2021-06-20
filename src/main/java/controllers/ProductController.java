@@ -33,8 +33,8 @@ public class ProductController {
         Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("currentUser", authService.findByUsername(currentUser.getName()));
         model.addAttribute("allUsers", authService.findAll());
-        System.out.println(product);
-        //productService.saveProduct(product);
+        model.addAttribute("allProducts", productService.findAll());
+        productService.saveProduct(product);
         return "administrator";
     }
 }

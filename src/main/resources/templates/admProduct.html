@@ -15,10 +15,10 @@
         <hr>
         <img id="productImg">
         <form id="addProduct" method="post" th:action="@{/admProduct}">
-            <input id="image" type="text" placeholder="Ссылка на изображение товара" required>
-            <input id="title" type="text" placeholder="Название товара" required>
-            <input id="description" type="text" placeholder="Описание товара" required>
-            <input id="cost" type="number" placeholder="Цена товара" required>
+            <input id="image" name="image" type="text" placeholder="Ссылка на изображение товара" required>
+            <input id="title" name="title" type="text" placeholder="Название товара" required>
+            <input id="description" name="description" type="text" placeholder="Описание товара" required>
+            <input id="cost" name="cost" type="number" placeholder="Цена товара" required>
             <input id="submitAdd" type="submit" value="Добавить">
         </form>
     </div>
