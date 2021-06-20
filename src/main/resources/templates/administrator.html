@@ -34,7 +34,7 @@
                 <td><p th:text="${u.surname + ' ' + u.name + ' ' + u.patronymic}"></p></td>
                 <td><p th:text="${u.username}"></p></td>
                 <td><p th:text="${u.email}"></p></td>
-                <td><button id="blockUserButton" th:name="${u.id}">Заблокировать</button></td>
+                <td><button class="blockUserButton" th:name="${u.id}">Заблокировать</button></td>
             </tr>
         </table>
         <hr>
@@ -54,7 +54,7 @@
                 <td><p th:text="${u.title}"></p></td>
                 <td><p th:text="${u.description}"></p></td>
                 <td><p th:text="${u.cost}"></p></td>
-                <td><button id="deleteProduct" th:name="${u.id}">Удалить</button></td>
+                <td><button class="deleteProduct" th:name="${u.id}">Удалить</button></td>
             </tr>
         </table>
         <hr>

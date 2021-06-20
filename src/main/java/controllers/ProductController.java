@@ -37,4 +37,14 @@ public class ProductController {
         productService.saveProduct(product);
         return "administrator";
     }
+
+    @PostMapping("/admDelProduct")
+    public String admDelProduct(@RequestParam Long id, Model model){
+        Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("currentUser", authService.findByUsername(currentUser.getName()));
+        model.addAttribute("allUsers", authService.findAll());
+        model.addAttribute("allProducts", productService.findAll());
+        productService.deleteProduct(id);
+        return "administrator";
+    }
 }

@@ -81,4 +81,13 @@ public class AuthController {
         return "profile";
     }
 
+    @PostMapping("/admCustomer")
+    public String admCustomer(@RequestParam Long id, Model model){
+        Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("currentUser", authService.findByUsername(currentUser.getName()));
+        model.addAttribute("allUsers", authService.findAll());
+        model.addAttribute("allProducts", productService.findAll());
+        authService.deleteUser(id);
+        return "administrator";
+    }
 }

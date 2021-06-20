@@ -219,7 +219,7 @@ table img {
     border: 3px solid white !important;
 }
 
-#blockUserButton {
+.blockUserButton {
     width: 100%;
 }
 
@@ -301,6 +301,6 @@ form#addProduct input[type="text" i] {
     font-family: 'Anonymous Pro', monospace;
 }
 
-#deleteProduct{
+.deleteProduct{
     width: 100%;
 }

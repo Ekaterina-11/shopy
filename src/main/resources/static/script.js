@@ -50,3 +50,21 @@ if(uploadPhotoButton != null){
         }
     }
 }
+
+let deleteProduct = Array.from(document.getElementsByClassName("deleteProduct"));
+if(deleteProduct != null){
+    deleteProduct.forEach(e => {
+        e.onclick = function(event){
+            post('/admDelProduct',"id="+encodeURIComponent(parseInt(event.target.name))); //event.target
+        }
+    });
+}
+
+let blockUserButton = Array.from(document.getElementsByClassName("blockUserButton"));
+if(blockUserButton != null){
+    blockUserButton.forEach(e => {
+        e.onclick = function(event){ //admCustomer
+            post('/admCustomer',"id="+encodeURIComponent(parseInt(event.target.name)));
+        }
+    });
+}

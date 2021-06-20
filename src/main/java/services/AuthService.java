@@ -53,6 +53,8 @@ public class AuthService implements UserDetailsService {
         userRepository.save(user);
     }
 
+    public void deleteUser(Long id){userRepository.deleteById(id);}
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> currentUser = userRepository.findByUsername(username);
