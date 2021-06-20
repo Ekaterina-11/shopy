@@ -16,6 +16,23 @@
         <h2 th:text="${currentUser.surname + ' ' + currentUser.name + ' ' + currentUser.patronymic}"></h2>
         <h3 th:text="${currentUser.address}"></h3>
         <h3 th:text="${currentUser.email}"></h3>
+        <hr>
+        <table border="1">
+            <tr>
+                <td>Id заказа</td>
+                <td>Дата</td>
+                <td>Артикулы товаров</td>
+                <td>Общая стоимость</td>
+                <td>Статус</td>
+            </tr>
+            <tr th:each="o : ${myOrders}">
+                <td><p th:text="${o.id}"></p></td>
+                <td><p th:text="${o.date}"></p></td>
+                <td><p th:text="${o.articles}"></p></td>
+                <td><p th:text="${o.sum}"></p></td>
+                <td><p th:text="${o.status}"></p></td>
+            </tr>
+        </table>
     </div>
 </main>
 <footer th:insert="includes/foot.html :: footerFragment"> </footer>

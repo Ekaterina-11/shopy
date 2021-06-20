@@ -4,9 +4,13 @@ function post(address, body) {
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
-          setTimeout(function(){
-              document.location.reload();
-          },500);
+		    if(address = '/cartConfirm'){
+		        document.location.href = "/profile";
+		    }else{
+                setTimeout(function(){
+                    document.location.reload();
+                },500);
+            }
 		}
 	};
 	xhr.send(body);
@@ -71,8 +75,28 @@ if(blockUserButton != null){
 
 let cardButton = document.getElementById("cardButton");
 let cartClose = document.getElementById("cartClose");
+let cartClear = document.getElementById("cartClear");
+let cartConfirm = document.getElementById("cartConfirm");
+let goodsCart = document.getElementById("goodsCart");
 if(cardButton != null){
     cartClose.onclick = function(event){
+        let cartDiv = document.getElementById("cartDiv");
+        cartDiv.style.display = "none";
+    }
+
+    cartConfirm.onclick = function(event){
+        post('/cartConfirm',"cart="+encodeURIComponent(JSON.parse(localStorage.getItem("cartStore")))+"&date="+new Date().toISOString());
+        localStorage.setItem("cartStore", JSON.stringify([]));
+        localStorage.setItem("cartTitle", JSON.stringify([]));
+        localStorage.setItem("cartCost", JSON.stringify([]));
+        let cartDiv = document.getElementById("cartDiv");
+        cartDiv.style.display = "none";
+    }
+
+    cartClear.onclick = function(event){
+        localStorage.setItem("cartStore", JSON.stringify([]));
+        localStorage.setItem("cartTitle", JSON.stringify([]));
+        localStorage.setItem("cartCost", JSON.stringify([]));
         let cartDiv = document.getElementById("cartDiv");
         cartDiv.style.display = "none";
     }
@@ -80,5 +104,36 @@ if(cardButton != null){
     cardButton.onclick = function(event){
         let cartDiv = document.getElementById("cartDiv");
         cartDiv.style.display = "flex";
+        let cartTitle = Array.from(JSON.parse(localStorage.getItem("cartTitle")));
+        let cartCost = Array.from(JSON.parse(localStorage.getItem("cartCost")));
+        let products = "";
+        for(let i=0;i<cartTitle.length;i++){
+            products += cartTitle[i]+" "+cartCost[i]+"<br>";
+        }
+        goodsCart.innerHTML = products;
     }
+}
+
+let addToCart = Array.from(document.getElementsByClassName("addToCart"));
+if(addToCart != null){
+    addToCart.forEach(e => {
+        e.onclick = function(event){
+            let cartStore = JSON.parse(localStorage.getItem("cartStore"));
+            let cartTitle = JSON.parse(localStorage.getItem("cartTitle"));
+            let cartCost = JSON.parse(localStorage.getItem("cartCost"));
+            cartStore.push(event.target.value);
+            cartTitle.push(document.getElementById("title"+event.target.value).innerHTML);
+            cartCost.push(document.getElementById("cost"+event.target.value).innerHTML);
+            localStorage.setItem("cartStore", JSON.stringify(cartStore));
+            localStorage.setItem("cartTitle", JSON.stringify(cartTitle));
+            localStorage.setItem("cartCost", JSON.stringify(cartCost));
+        }
+    });
+}
+
+let initialStore = JSON.parse(localStorage.getItem("cartStore"));
+if(initialStore == null){
+    localStorage.setItem("cartStore", JSON.stringify([]));
+    localStorage.setItem("cartTitle", JSON.stringify([]));
+    localStorage.setItem("cartCost", JSON.stringify([]));
 }

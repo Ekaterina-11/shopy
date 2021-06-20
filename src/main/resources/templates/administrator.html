@@ -40,6 +40,29 @@
         <hr>
         <h2>Заказы пользователей</h2>
         <hr>
+        <div th:if="${allOrders.empty}">
+            <div>Нет заказов</div>
+        </div>
+        <table border="1">
+            <tr>
+                <td>Id заказа</td>
+                <td>Дата</td>
+                <td>Адрес доставки</td>
+                <td>Артикулы товаров</td>
+                <td>Общая стоимость</td>
+                <td>Статус</td>
+                <td>Действие</td>
+            </tr>
+            <tr th:each="o : ${allOrders}">
+                <td><p th:text="${o.id}"></p></td>
+                <td><p th:text="${o.date}"></p></td>
+                <td><p th:text="${o.buyerAddress}"></p></td>
+                <td><p th:text="${o.articles}"></p></td>
+                <td><p th:text="${o.sum}"></p></td>
+                <td><p th:text="${o.status}"></p></td>
+                <td><button class="confirmOrderButton" th:name="${o.id}">Исполнить</button></td>
+            </tr>
+        </table>
         <h2>Товары</h2>
         <table border="1">
             <tr>

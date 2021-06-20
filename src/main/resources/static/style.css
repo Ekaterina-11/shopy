@@ -362,8 +362,30 @@ div#products {
 
 #cartClose{
     color: white;
+    cursor: pointer;
 }
 
 #cartClose:hover{
     color: #333333;
+    cursor: pointer;
+}
+
+#cartClear{
+    color: white;
+    cursor: pointer;
+}
+
+#cartClear:hover{
+    color: #333333;
+    cursor: pointer;
+}
+
+#cartConfirm{
+    color: white;
+    cursor: pointer;
+}
+
+#cartConfirm:hover{
+    color: #333333;
+    cursor: pointer;
 }

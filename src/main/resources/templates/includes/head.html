@@ -13,7 +13,12 @@
     <div sec:authorize="isAuthenticated()"><a href="/logout">Выход</a></div>
     <div id="cartDiv" sec:authorize="isAuthenticated()">
         Корзина
-        <div id="cartClose">Закрыть корзину</div>
+        <div id="goodsCart"></div>
+        <div>
+            <div id="cartConfirm">Сделать заказ</div>
+            <div id="cartClear">Очистить корзину</div>
+            <div id="cartClose">Закрыть корзину</div>
+        </div>
     </div>
 </div>
 </body>

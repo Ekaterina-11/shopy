@@ -18,10 +18,10 @@
             </div>
             <div class="simpleProduct" th:each="p : ${allProducts}">
                 <img th:src="${p.image}"/>
-                <span th:text="${p.title}"></span>
+                <span th:id="'title' + ${p.id}" th:text="${p.title}"></span>
                 <span th:text="${p.description}"></span>
-                <span th:text="${p.cost}"></span>
-                <button sec:authorize="isAuthenticated()" th:name="${p.id}">В корзину</button>
+                <span th:id="'cost' + ${p.id}" th:text="${p.cost}"></span>
+                <button sec:authorize="isAuthenticated()" class="addToCart" th:value="${p.id}">В корзину</button>
             </div>
         </div>
     </div>

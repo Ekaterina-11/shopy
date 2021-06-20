@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import services.AuthService;
+import services.OrderService;
 import services.ProductService;
 
 import javax.validation.Valid;
@@ -21,6 +22,8 @@ public class AuthController {
     private AuthService authService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private OrderService orderService;
 
     @GetMapping("/login")
     public String login() {
@@ -55,7 +58,7 @@ public class AuthController {
     @GetMapping("/profile")
     public String profile(Model model) {
         Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
-
+        model.addAttribute("myOrders", orderService.findByBuyerId(authService.findByUsername(currentUser.getName()).getId()));
         if(!currentUser.getName().equals("anonymousUser")){
             model.addAttribute("currentUser", authService.findByUsername(currentUser.getName()));
         }
@@ -68,6 +71,7 @@ public class AuthController {
         model.addAttribute("currentUser", authService.findByUsername(currentUser.getName()));
         model.addAttribute("allUsers", authService.findAll());
         model.addAttribute("allProducts", productService.findAll());
+        model.addAttribute("allOrders", orderService.findAll());
         return "administrator";
     }
 
@@ -77,6 +81,7 @@ public class AuthController {
         model.addAttribute("currentUser", authService.findByUsername(currentUser.getName()));
         model.addAttribute("allUsers", authService.findAll());
         model.addAttribute("allProducts", productService.findAll());
+        model.addAttribute("allOrders", orderService.findAll());
         authService.uploadPhoto(authService.findByUsername(currentUser.getName()), avatarPhoto);
         return "profile";
     }
@@ -87,6 +92,7 @@ public class AuthController {
         model.addAttribute("currentUser", authService.findByUsername(currentUser.getName()));
         model.addAttribute("allUsers", authService.findAll());
         model.addAttribute("allProducts", productService.findAll());
+        model.addAttribute("allOrders", orderService.findAll());
         authService.deleteUser(id);
         return "redirect:/administrator";
     }
