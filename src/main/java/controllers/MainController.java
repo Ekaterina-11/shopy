@@ -20,8 +20,8 @@ public class MainController {
     @GetMapping("/")
     public String home(Model model){
         Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("allProducts", productService.findAll());
         if(!currentUser.getName().equals("anonymousUser")){
-            model.addAttribute("allProducts", productService.findAll());
             model.addAttribute("currentUser", authService.findByUsername(currentUser.getName()));
         }
         return "index";

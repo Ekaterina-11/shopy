@@ -197,20 +197,6 @@ hr {
     color: white;
 }
 
-div#products {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #232323;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    padding: 10px;
-    border: 3px solid black;
-    color: white;
-}
-
 table img {
     object-fit: cover !important;
     border-radius: 50% !important;
@@ -303,4 +289,56 @@ form#addProduct input[type="text" i] {
 
 .deleteProduct{
     width: 100%;
+}
+
+.simpleProduct {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.simpleProduct img {
+    width: 200px !important;
+    height: 200px;
+    border: 6px solid white !important;
+}
+
+div#products {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+    background: #232323;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 10px;
+    border: 3px solid black;
+    color: white;
+}
+
+#productList{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+    background: #232323;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 10px;
+    border: 3px solid white;
+    color: white;
+}
+
+.simpleProduct button{
+    width: 80% !important;
+}
+
+.simpleProduct button :hover{
+    width: 80% !important;
 }

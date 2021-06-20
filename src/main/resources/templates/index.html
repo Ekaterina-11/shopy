@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Shopy - Главная</title>
@@ -11,7 +11,19 @@
 <header th:insert="includes/head.html :: headerFragment"> </header>
 <main>
     <div id="products">
-
+        <h2>Наш ассортимент: </h2>
+        <div id="productList">
+            <div th:if="${allProducts.empty}">
+                <div>Продуктов пока нет, приходите завтра :)</div>
+            </div>
+            <div class="simpleProduct" th:each="p : ${allProducts}">
+                <img th:src="${p.image}"/>
+                <span th:text="${p.title}"></span>
+                <span th:text="${p.description}"></span>
+                <span th:text="${p.cost}"></span>
+                <button sec:authorize="isAuthenticated()" th:name="${p.id}">В корзину</button>
+            </div>
+        </div>
     </div>
 </main>
 <footer th:insert="includes/foot.html :: footerFragment"> </footer>
