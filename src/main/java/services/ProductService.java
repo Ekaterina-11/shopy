@@ -16,6 +16,10 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    public void deleteLink(Long cartId){
+        productRepository.deleteLink(cartId);
+    }
+
     public List<Product> findAll(){
         return productRepository.findAll();
     }

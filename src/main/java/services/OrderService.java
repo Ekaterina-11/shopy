@@ -19,6 +19,8 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
+    public Order findById(Long id){ return orderRepository.findById(id).get();}
+
     public List<Order> findAll(){ return orderRepository.findAll();}
 
     public void saveOrder(Order order){

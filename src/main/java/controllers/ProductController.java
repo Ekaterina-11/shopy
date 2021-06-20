@@ -2,6 +2,7 @@ package controllers;
 
 import entity.Order;
 import entity.Product;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -51,7 +52,21 @@ public class ProductController {
         model.addAttribute("allUsers", authService.findAll());
         model.addAttribute("allProducts", productService.findAll());
         model.addAttribute("allOrders", orderService.findAll());
+        productService.deleteLink(id);
         productService.deleteProduct(id);
+        return "redirect:/administrator";
+    }
+
+    @PostMapping("/confirmOrder")
+    public String confirmOrder(@RequestParam Long id, Model model){
+        Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("currentUser", authService.findByUsername(currentUser.getName()));
+        model.addAttribute("allUsers", authService.findAll());
+        model.addAttribute("allProducts", productService.findAll());
+        model.addAttribute("allOrders", orderService.findAll());
+        Order order = orderService.findById(id);
+        order.setStatus("Исполнено");
+        orderService.saveOrder(order);
         return "redirect:/administrator";
     }
 

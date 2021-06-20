@@ -27,7 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/login","/registration","/product/**","/activationProfile/**","/cartConfirm").permitAll()
                     .antMatchers("/profile","/uploadAvatarPhoto").hasAuthority("ROLE_CUSTOMER")
-                    .antMatchers("/administrator","/admProduct","/admDelProduct","/admCustomer","/uploadAvatarPhoto").hasAuthority("ROLE_ADMIN")
+                    .antMatchers("/confirmOrder","/administrator","/admProduct","/admDelProduct","/admCustomer","/uploadAvatarPhoto").hasAuthority("ROLE_ADMIN")
                     .antMatchers("/","/*.css", "/*.js", "/img/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

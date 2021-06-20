@@ -18,7 +18,7 @@ public class Order {
     private Long id;
     private Long buyerId;
     private String date;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Product> cart = new ArrayList<Product>();
 
     private float sum;

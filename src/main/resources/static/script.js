@@ -4,13 +4,9 @@ function post(address, body) {
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
-		    if(address = '/cartConfirm'){
-		        document.location.href = "/profile";
-		    }else{
-                setTimeout(function(){
-                    document.location.reload();
-                },500);
-            }
+            setTimeout(function(){
+                document.location.reload();
+            },500);
 		}
 	};
 	xhr.send(body);
@@ -60,6 +56,15 @@ if(deleteProduct != null){
     deleteProduct.forEach(e => {
         e.onclick = function(event){
             post('/admDelProduct',"id="+encodeURIComponent(parseInt(event.target.name)));
+        }
+    });
+}
+
+let confirmOrderButton = Array.from(document.getElementsByClassName("confirmOrderButton"));
+if(confirmOrderButton != null){
+    confirmOrderButton.forEach(e => {
+        e.onclick = function(event){
+            post('/confirmOrder',"id="+encodeURIComponent(parseInt(event.target.name)));
         }
     });
 }

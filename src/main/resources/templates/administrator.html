@@ -47,6 +47,7 @@
             <tr>
                 <td>Id заказа</td>
                 <td>Дата</td>
+                <td>Заказчик</td>
                 <td>Адрес доставки</td>
                 <td>Артикулы товаров</td>
                 <td>Общая стоимость</td>
@@ -56,6 +57,7 @@
             <tr th:each="o : ${allOrders}">
                 <td><p th:text="${o.id}"></p></td>
                 <td><p th:text="${o.date}"></p></td>
+                <td><p th:text="${o.buyerUsername}"></p></td>
                 <td><p th:text="${o.buyerAddress}"></p></td>
                 <td><p th:text="${o.articles}"></p></td>
                 <td><p th:text="${o.sum}"></p></td>
@@ -67,6 +69,7 @@
         <table border="1">
             <tr>
                 <td>Изображение</td>
+                <td>Артикул</td>
                 <td>Название</td>
                 <td>Описание</td>
                 <td>Цена</td>
@@ -74,6 +77,7 @@
             </tr>
             <tr th:each="u : ${allProducts}">
                 <td><img th:src="${u.image}"/></td>
+                <td><p th:text="${u.id}"></p></td>
                 <td><p th:text="${u.title}"></p></td>
                 <td><p th:text="${u.description}"></p></td>
                 <td><p th:text="${u.cost}"></p></td>

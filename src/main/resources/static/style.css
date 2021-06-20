@@ -389,3 +389,7 @@ div#products {
     color: #333333;
     cursor: pointer;
 }
+
+.confirmOrderButton{
+    width: 100% !important;
+}
